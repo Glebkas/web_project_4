@@ -1,0 +1,13 @@
+.header__logo {
+   width:10.8125rem ;
+   height: 2.0625rem;
+   background-image: url(../../../images/Around\ the\ us\ logo.png);
+   margin: 2.8125rem 0 2.5625rem 0;
+}
+
+@media screen and (max-width: 880px) {
+    .header__logo{
+        margin-left: 1.6875rem;
+    }
+    
+}
