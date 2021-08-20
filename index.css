@@ -1,6 +1,16 @@
 @import url(./vendor/normalize.css);
 
 @import url(./blocks/root/root.css);
+@import url(./blocks/main/main.css);
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
 @import url(./blocks/header/__line/header__line.css);
+@import url(./blocks/profile/profile.css);
+@import url(./blocks/profile/__info/profile__info.css);
+@import url(./blocks/profile/__img/profile__img.css);
+@import url(./blocks/profile/__details/profile__details.css);
+@import url(./blocks/profile/__details-top/profile__details-top.css);
+@import url(./blocks/profile/__name/profile__name.css);
+@import url(./blocks/profile/__title/profile__title.css);
+@import url(./blocks/profile/__edit-button/profile__edit-button.css);
+@import url(./blocks/profile/__edit-icon/profile__edit-icon.css);
