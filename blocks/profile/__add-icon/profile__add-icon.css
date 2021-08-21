@@ -1,0 +1,16 @@
+.profile__add-icon {
+    background-image: url(../../../images/add.svg);
+    width: 22px;
+    height: 22px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: auto;
+  }
+  
+  @media screen and (max-width: 452px) {
+    .profile__add-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  

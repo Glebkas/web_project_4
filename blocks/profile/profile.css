@@ -3,3 +3,12 @@
     margin: 2.26rem 0 2.89rem 0 ;
     justify-content: space-between;
 }
+
+@media screen and (max-width: 768px) {
+.profile{
+    flex-direction: column;
+
+}
+
+    
+}

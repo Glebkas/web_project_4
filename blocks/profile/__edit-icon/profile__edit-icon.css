@@ -1,5 +1,14 @@
 .profile__edit-icon {
+  background-image: url(../../../images/edit.svg);
   width: 10px;
   height: 10px;
-  fill: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 452px) {
+  .profile__edit-icon {
+    width: 7.5px;
+    height: 7.5px;
+  }
 }
