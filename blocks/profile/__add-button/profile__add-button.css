@@ -9,6 +9,13 @@
 @media screen and (max-width: 768px) {
   .profile__add-button {
     width: -webkit-fill-available;
+    max-width: 576px;
     margin: 2.25rem 0 0 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profile__add-button {
+    max-width: 280px;
   }
 }

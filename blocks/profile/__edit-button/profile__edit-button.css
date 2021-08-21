@@ -8,15 +8,11 @@
   margin-top: 0.5rem;
 }
 
-
 @media screen and (max-width: 452px) {
-    .profile__edit-button{
-        max-width: 18px;
-        height: 18px;
-        margin-left: 0.625rem;
-        margin-top: 0;
-    
-    }
-    
-        
-    }
+  .profile__edit-button {
+    max-width: 18px;
+    height: 18px;
+    margin-left: 0.625rem;
+    margin-top: 0;
+  }
+}

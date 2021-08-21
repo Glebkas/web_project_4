@@ -1,0 +1,10 @@
+.card__description{
+    background-color:#FFFFFF ;
+    border-radius:0 0 10px 10px;
+    display: flex;
+    flex-direction: row;
+    margin: -0.125rem 0 0 0;
+    padding: 0 1.125rem 0 1.3125rem;
+    justify-content: space-between;
+    align-items: center;
+}
