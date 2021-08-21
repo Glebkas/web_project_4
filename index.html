@@ -14,6 +14,19 @@
     <div class="header__line"></div>
   </header>
   <main class="main">
+    <section class="popup">
+      <div class="popup__container">
+        <button class="popup__close-button">
+          <div class="popup__close-icon"></div>
+        </button>
+        <h2 class="popup__title">Edit profile</h2>
+        <form class="form">
+          <input class="form__input" placeholder="Name" type="text" id="list-name" name="list-name">
+          <input class="form__input" placeholder="About me" type="text" id="list-about-me" name="list-about-me">
+          <button class="form__submit">Save</button>
+        </form>
+      </div>
+    </section>
     <section class="profile">
       <div class="profile__info">
         <img class="profile__img" src="./images/profile-image.jpg" alt="travaler profile image" />
@@ -21,7 +34,6 @@
           <div class="profile__details-top">
             <h1 class="profile__name">Jacques Cousteau</h1>
             <button class="profile__edit-button">
-              <div class="profile__edit-icon"></div>
             </button>
           </div>
           <p class="profile__title">Explorer</p>
@@ -29,7 +41,6 @@
       </div>
       </div>
       <button class="profile__add-button">
-        <div class="profile__add-icon"></div>
       </button>
     </section>
     <section class="cards">

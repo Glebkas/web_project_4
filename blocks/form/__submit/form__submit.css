@@ -1,0 +1,13 @@
+.form__submit {
+  margin-top: 48px;
+  max-width: 358px;
+  width: -webkit-fill-available;
+  background-color: black;
+  box-shadow: none;
+  color: white;
+  border: none;
+  min-height: 50.15px;
+  font-size: 1.125rem;
+  line-height: 1.2;
+  text-align: center;
+}
