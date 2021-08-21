@@ -1,5 +1,8 @@
 .profile__details{
+    display: flex;
     margin-left: 1.875rem;
+    flex-direction: column;
+    justify-content: center;
 }
 
 
