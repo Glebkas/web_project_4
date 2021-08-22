@@ -5,5 +5,5 @@
   padding: 36px;
   position: relative;
   max-width: 358px;
-  width: -webkit-fill-available;
+  width: 100%;
 }
