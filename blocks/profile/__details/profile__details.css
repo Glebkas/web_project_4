@@ -1,6 +1,6 @@
 .profile__details {
   display: flex;
-  margin-left: 1.875rem;
+  margin-left: 30px;
   flex-direction: column;
   justify-content: center;
 }

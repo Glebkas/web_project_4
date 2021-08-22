@@ -1,13 +1,22 @@
 .header__logo {
-   width:10.8125rem ;
-   height: 2.0625rem;
-   background-image: url(../../../images/Around\ the\ us\ logo.png);
-   margin: 2.8125rem 0 2.5625rem 0;
+  max-width: 173px;
+  min-height: 33px;
+  background-image: url(../../../images/Around\ the\ us\ logo.png);
+  margin: 45px 0 41px 0;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 @media screen and (max-width: 880px) {
-    .header__logo{
-        margin-left: 1.6875rem;
-    }
-    
+  .header__logo {
+    margin-left: 27px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .header__logo {
+    max-width: 128px;
+    min-height: 24px;
+    margin: 28px 0 32px 27px;
+  }
 }
