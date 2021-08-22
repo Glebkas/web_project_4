@@ -3,18 +3,18 @@
  */
 
 //profile selectors
-const profileName = document.querySelector(".profile__name");
-const profileEditBtn = document.querySelector(".profile__edit-button");
-const profileTitle = document.querySelector(".profile__title");
+let profileName = document.querySelector(".profile__name");
+let profileEditBtn = document.querySelector(".profile__edit-button");
+let profileTitle = document.querySelector(".profile__title");
 
 //popup selctors
-const popUp = document.querySelector(".popup");
-const closeBtn = document.querySelector(".popup__close-button");
+let popUp = document.querySelector(".popup");
+let closeBtn = document.querySelector(".popup__close-button");
 
 //form selectors
-const form = document.querySelector(".form");
-const nameInput = document.querySelector("#profile-name");
-const titleInput = document.querySelector("#profile-about-me");
+let form = document.querySelector(".form");
+let nameInput = document.querySelector("#profile-name");
+let titleInput = document.querySelector("#profile-about-me");
 
 //init
 nameInput.value = profileName.textContent;
