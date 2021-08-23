@@ -20,7 +20,7 @@ Users should be able to:
 
 - View the optimal layout depending on their device's screen size
 - See hover states for interactive elements
-- Edit thee profile name and title
+- Edit the profile name and title
 - Popup would open when the edit button clicked
 
 ### Screenshot
