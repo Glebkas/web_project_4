@@ -4,20 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around the us</title>
-    <link rel="stylesheet" href="./index.css" />
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="icon" type="image/png" href="./images/favicon-32x32.png" />
   </head>
   <body class="root">
     <header class="header">
       <div class="header__logo"></div>
-      <div class="header__line"></div>
     </header>
     <main class="main">
       <section class="popup">
         <div class="popup__container">
-          <button class="popup__close-button"></button>
+          <button type="button" class="popup__close-button"></button>
           <h2 class="popup__title">Edit profile</h2>
-          <form class="form">
+          <form class="form" name="profile-form">
             <input
               class="form__input"
               placeholder="Name"
@@ -32,7 +31,7 @@
               id="profile-about-me"
               name="profile-about-me"
             />
-            <button class="form__submit">Save</button>
+            <button type="button" class="form__submit">Save</button>
           </form>
         </div>
       </section>
@@ -46,13 +45,13 @@
           <div class="profile__details">
             <div class="profile__details-top">
               <h1 class="profile__name">Jacques Cousteau</h1>
-              <button class="profile__edit-button"></button>
+              <button type="button" class="profile__edit-button"></button>
             </div>
             <p class="profile__title">Explorer</p>
           </div>
         </div>
 
-        <button class="profile__add-button"></button>
+        <button type="button" class="profile__add-button"></button>
       </section>
       <section class="cards">
         <ul class="cards__list">
@@ -64,8 +63,8 @@
                 alt="Yosemite Valley river view"
               />
               <div class="card__description">
-                <p class="card__title">Yosemite Valley</p>
-                <button class="card__like-button"></button>
+                <h2 class="card__title">Yosemite Valley</h2>
+                <button type="button" class="card__like-button"></button>
               </div>
             </div>
           </li>
@@ -77,8 +76,8 @@
                 alt="Lake Louise mountain and river view"
               />
               <div class="card__description">
-                <p class="card__title">Lake Louise</p>
-                <button class="card__like-button"></button>
+                <h2 class="card__title">Lake Louise</h2>
+                <button type="button" class="card__like-button"></button>
               </div>
             </div>
           </li>
@@ -90,8 +89,8 @@
                 alt="Bald Mountains sunset view"
               />
               <div class="card__description">
-                <p class="card__title">Bald Mountains</p>
-                <button class="card__like-button"></button>
+                <h2 class="card__title">Bald Mountains</h2>
+                <button type="button" class="card__like-button"></button>
               </div>
             </div>
           </li>
@@ -103,8 +102,8 @@
                 alt="Latemar mountain view"
               />
               <div class="card__description">
-                <p class="card__title">Latemar</p>
-                <button class="card__like-button"></button>
+                <h2 class="card__title">Latemar</h2>
+                <button type="button" class="card__like-button"></button>
               </div>
             </div>
           </li>
@@ -116,8 +115,8 @@
                 alt="Vanoise National Park lake and mountain view"
               />
               <div class="card__description">
-                <p class="card__title">Vanoise National Park</p>
-                <button class="card__like-button"></button>
+                <h2 class="card__title">Vanoise National Park</h2>
+                <button type="button" class="card__like-button"></button>
               </div>
             </div>
           </li>
@@ -129,8 +128,8 @@
                 alt="Lago di Braies boat docs"
               />
               <div class="card__description">
-                <p class="card__title">Lago di Braies</p>
-                <button class="card__like-button"></button>
+                <h2 class="card__title">Lago di Braies</h2>
+                <button type="button" class="card__like-button"></button>
               </div>
             </div>
           </li>
