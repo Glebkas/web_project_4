@@ -16,13 +16,15 @@ let form = document.querySelector(".form");
 let nameInput = document.querySelector("#profile-name");
 let titleInput = document.querySelector("#profile-about-me");
 
-//init
-nameInput.value = profileName.textContent;
-titleInput.value = profileTitle.textContent;
-
 //functions
 
 function togglePopup() {
+  popUp.classList.toggle("popup_opend");
+}
+
+function openPopup() {
+  nameInput.value = profileName.textContent;
+  titleInput.value = profileTitle.textContent;
   popUp.classList.toggle("popup_opend");
 }
 
@@ -34,6 +36,6 @@ function updateName(event) {
 }
 
 //event listeners
-profileEditBtn.addEventListener("click", togglePopup, false);
+profileEditBtn.addEventListener("click", openPopup, false);
 closeBtn.addEventListener("click", togglePopup, false);
 form.addEventListener("submit", updateName, false);
