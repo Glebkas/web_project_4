@@ -25,7 +25,7 @@ function togglePopup() {
 function openPopup() {
   nameInput.value = profileName.textContent;
   titleInput.value = profileTitle.textContent;
-  popUp.classList.toggle("popup_opend");
+  togglePopup();
 }
 
 function updateName(event) {
