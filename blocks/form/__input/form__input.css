@@ -17,9 +17,9 @@
 }
 
 @media screen and (max-width: 520px) {
-    .form__input {
-        padding: 46px 0 9px 0;
-
+  .form__input {
+    padding: 46px 0 9px 0;
+  }
 
   .form__input:first-of-type {
     padding: 76px 0 13.26px 0;
