@@ -31,6 +31,7 @@ const initialCards = [
 const body = document.querySelector(".root");
 const main = body.querySelector(".main");
 const cards = main.querySelector(".cards");
+const cardsList = cards.querySelector(".cards__list");
 
 //profile selectors
 const profile = main.querySelector(".profile");
@@ -40,11 +41,12 @@ const profileAddBtn = profile.querySelector(".profile__add-button");
 const profileTitle = profile.querySelector(".profile__title");
 
 //card selectors
-const cardsLstItm = cards.querySelector(".cards__list-item");
-const card = cardsLstItm.querySelector(".card");
-const cardImg = card.querySelector(".card__image");
-const cardTtl = card.querySelector(".card__image");
-const cardLike = card.querySelector(".card__like-button");
+//const cardsLstItm = cards.querySelector(".cards__list-item");
+// card = cardsLstItm.querySelector(".card");
+//const cardImg = card.querySelector(".card__image");
+///const cardTtl = card.querySelector(".card__image");
+//const cardLike = card.querySelector(".card__like-button");
+//const cardRmvBtn = card.querySelector(".card__remove-button");
 
 // profile edit popup selctors
 
@@ -65,12 +67,20 @@ const addForm = addPopUp.querySelector(".form");
 const imageTitleInput = addPopUp.querySelector("#image-title");
 const imageUrlInput = addPopUp.querySelector("#image-url");
 
+//template selectors
+
 //functions
 
 function openEditPopup() {
   nameInput.value = profileName.textContent;
   titleInput.value = profileTitle.textContent;
   togglePopUp(editPopUp);
+}
+
+function openAddPopup() {
+  imageTitleInput.value = null;
+  imageUrlInput.value = null;
+  togglePopUp(addPopUp);
 }
 
 function updateName(event) {
@@ -86,14 +96,38 @@ function toggleAddPopup() {
 
 const togglePopUp = (popupFrame) => popupFrame.classList.toggle("popup_opend");
 
+function removeCard(element) {
+  element.remove();
+}
+
+function addCard(card) {
+  const cardTemplate = body
+    .querySelector("#card-template")
+    .content.querySelector(".cards__list-item");
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardTitle = cardElement.querySelector(".card__title");
+  const cardLike = cardElement.querySelector(".card__like-button");
+  const cardRmvBtn = cardElement.querySelector(".card__remove-button");
+  cardImage.src = card.link;
+  cardTitle.textContent = card.name;
+  cardImage.alt = card.name;
+  cardRmvBtn.addEventListener("click", () => removeCard(cardElement));
+  cardImage.addEventListener("click", () => {});
+  cardLike.addEventListener("click", () => {});
+  return cardElement;
+}
+
+const renderCard = (card, container) => {
+  container.append(addCard(card));
+};
+
+initialCards.forEach((card) => renderCard(card, cardsList));
+
 //event listeners
 profileEditBtn.addEventListener("click", () => openEditPopup());
 closeBtnEdit.addEventListener("click", () => togglePopUp(editPopUp));
-
-profileAddBtn.addEventListener("click", () => togglePopUp(addPopUp));
+profileAddBtn.addEventListener("click", () => openAddPopup());
 closeBtnAdd.addEventListener("click", () => togglePopUp(addPopUp));
 editForm.addEventListener("submit", updateName, false);
-
-
-
-
+addForm.addEventListener("submit", prenderCard, false);
