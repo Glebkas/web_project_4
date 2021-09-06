@@ -100,6 +100,10 @@ function removeCard(element) {
   element.remove();
 }
 
+function cardLikeBtn(element) {
+  element.classList.toggle("card__like-button_on");
+}
+
 function addCard(card) {
   const cardTemplate = body
     .querySelector("#card-template")
@@ -113,8 +117,8 @@ function addCard(card) {
   cardTitle.textContent = card.name;
   cardImage.alt = card.name;
   cardRmvBtn.addEventListener("click", () => removeCard(cardElement));
-  cardImage.addEventListener("click", () => {});
-  cardLike.addEventListener("click", () => {});
+  //cardImage.addEventListener("click", () => ;
+  cardLike.addEventListener("click", () => cardLikeBtn(cardLike));
   return cardElement;
 }
 
@@ -130,4 +134,4 @@ closeBtnEdit.addEventListener("click", () => togglePopUp(editPopUp));
 profileAddBtn.addEventListener("click", () => openAddPopup());
 closeBtnAdd.addEventListener("click", () => togglePopUp(addPopUp));
 editForm.addEventListener("submit", updateName, false);
-addForm.addEventListener("submit", prenderCard, false);
+addForm.addEventListener("submit", renderCard, false);
