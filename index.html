@@ -14,7 +14,10 @@
     <main class="main">
       <section class="popup popup_type_edit-profile">
         <div class="popup__container">
-          <button type="button" class="popup__close-button popup__close-button_type_edit"></button>
+          <button
+            type="button"
+            class="popup__close-button popup__close-button_type_edit"
+          ></button>
           <h2 class="popup__title">Edit profile</h2>
           <form class="form form_type_edit-profile" name="profile-form">
             <input
@@ -36,12 +39,12 @@
         </div>
       </section>
 
-
-
-
       <section class="popup popup_type_add-plcae">
         <div class="popup__container">
-          <button type="button" class="popup__close-button popup__close-button_type_add"></button>
+          <button
+            type="button"
+            class="popup__close-button popup__close-button_type_add"
+          ></button>
           <h2 class="popup__title">New place</h2>
           <form class="form form_type_add-place" name="add-place">
             <input
@@ -54,7 +57,7 @@
             <input
               class="form__input"
               placeholder="Image link"
-              type="text"
+              type="url"
               id="image-url"
               name="image-url"
             />
@@ -63,6 +66,16 @@
         </div>
       </section>
 
+      <section class="popup popup_type_display-image">
+        <div class="popup__container popup__container_type_display-image">
+          <button
+            type="button"
+            class="popup__close-button popup__close-button_type_display-image"
+          ></button>
+          <img class="popup__image" src="" alt="">
+          <h2 class="popup__title popup__title_type_display-image"></h2>
+        </div>
+      </section>
 
 
       <section class="profile">
@@ -84,9 +97,7 @@
         <button type="button" class="profile__add-button"></button>
       </section>
       <section class="cards">
-        <ul class="cards__list">
-         
-        </ul>
+        <ul class="cards__list"></ul>
       </section>
     </main>
     <footer class="footer">
@@ -97,7 +108,7 @@
       <li class="cards__list-item">
         <div class="card">
           <button class="card__remove-button" type="button"></button>
-          <img class="card__image"/>
+          <img class="card__image" />
           <div class="card__description">
             <h2 class="card__title">Lago di Braies</h2>
             <button type="button" class="card__like-button"></button>
