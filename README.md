@@ -22,6 +22,9 @@ Users should be able to:
 - See hover states for interactive elements
 - Edit the profile name and title
 - Popup would open when the edit button clicked
+- Add new cards
+- Image preview will display when image clicked
+- Like button will change the heart state to black
 
 ### Screenshot
 
@@ -44,7 +47,6 @@ Users should be able to:
 
 ### Continued development
 
-I need to add like button functionality
 
 ## Author
 
