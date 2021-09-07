@@ -125,6 +125,7 @@ function addCard(card) {
 const ImagePreview = (card) => {
   popupImgTitle.textContent = card.name;
   popupImg.src = card.link;
+  popupImg.alt = card.name;
   togglePopUp(imagePopUp);
 };
 
