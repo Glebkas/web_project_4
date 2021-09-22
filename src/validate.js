@@ -1,16 +1,16 @@
 const hasValidInputs = (inputList) =>
   inputList.every((input) => input.validity.valid === true);
 
-const showInputError = (inputEl, formEl, { errorClass }) => {
+const showInputError = (inputEl, formEl, { inputErrorClass }) => {
   const errorSpan = formEl.querySelector("#" + inputEl.id + "-error");
   errorSpan.textContent = inputEl.validationMessage;
-  inputEl.classList.add(errorClass);
+  inputEl.classList.add(inputErrorClass);
 };
 
-const hideInputError = (inputEl, formEl, { errorClass }) => {
+const hideInputError = (inputEl, formEl, { inputErrorClass }) => {
   const errorSpan = formEl.querySelector("#" + inputEl.id + "-error");
   errorSpan.textContent = "";
-  inputEl.classList.remove(errorClass);
+  inputEl.classList.remove(inputErrorClass);
 };
 const checkInputValidity = (formEl, inputEl, settings) => {
   if (inputEl.validity.valid) {
@@ -58,5 +58,5 @@ enableValidation({
   submitButton: "form__submit",
   inactiveButtonClass: "form__submit_disabled",
   inputErrorClass: "form__input_type_error",
-  errorClass: "form__error_visible",
+  ErrorClass: "form__error_visible",
 });
