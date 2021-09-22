@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./pages/index.css" />
     <link rel="icon" type="image/png" href="./images/favicon-32x32.png" />
   </head>
-  < class="root">
+  <body class="root">
     <header class="header">
       <div class="header__logo"></div>
     </header>
@@ -19,21 +19,29 @@
             class="popup__close-button popup__close-button_type_edit"
           ></button>
           <h2 class="popup__title">Edit profile</h2>
-          <form class="form form_type_edit-profile" name="profile-form">
+          <form novalidate class="form form_type_edit-profile" name="profile-form">
             <input
               class="form__input"
               placeholder="Name"
               type="text"
               id="profile-name"
               name="profile-name"
+              maxlength="40"
+              minlength="2"
+              required
             />
+            <span id="profile-name-error" class="form__input_error"></span>
             <input
               class="form__input"
               placeholder="About me"
               type="text"
               id="profile-about-me"
               name="profile-about-me"
+              maxlength="200"
+              minlength="2"
+              required
             />
+            <span id="profile-about-me-error" class="form__input_error"></span>
             <button type="submit" class="form__submit">Save</button>
           </form>
         </div>
@@ -46,21 +54,27 @@
             class="popup__close-button popup__close-button_type_add"
           ></button>
           <h2 class="popup__title">New place</h2>
-          <form class="form form_type_add-place" name="add-place">
+          <form novalidate class="form form_type_add-place" name="add-place">
             <input
               class="form__input"
               placeholder="Title"
               type="text"
               id="image-title"
               name="image-title"
+              required
+              minlength="1"
+              maxlength="30"
             />
+            <span id="image-title-error" class="form__input_error"></span>
             <input
               class="form__input"
               placeholder="Image link"
               type="url"
               id="image-url"
               name="image-url"
+              required
             />
+            <span id="image-url-error" class="form__input_error"></span>
             <button type="submit" class="form__submit">Create</button>
           </form>
         </div>
