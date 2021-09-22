@@ -5,6 +5,7 @@ const cards = main.querySelector(".cards");
 const cardsList = cards.querySelector(".cards__list");
 const popUp = main.querySelector(".popup");
 const popUpOpend = main.querySelector(".popup_opend");
+const PopUpList = [...main.querySelectorAll(".popup")];
 
 //profile selectors
 const profile = main.querySelector(".profile");
@@ -119,16 +120,9 @@ function addCardFormSubmitHandler(event) {
   togglePopUp(popupAddCard);
 }
 
-const PopUpList = [...main.querySelectorAll(".popup")];
-PopUpList.forEach((popUpEl) => {
-  popUpEl.addEventListener("click", overlayClick, false);
-});
-
 function escape(e) {
   if (e.key === "Escape") {
-    PopUpList.forEach((popUpEl) => {
-      popUpEl.classList.remove("popup_opend");
-    });
+    closePopUp();
   }
 }
 
@@ -137,11 +131,19 @@ function overlayClick(e) {
     e.target == e.currentTarget &&
     !e.currentTarget.classList.contains("popup__container")
   ) {
-    PopUpList.forEach((popUpEl) => {
-      popUpEl.classList.remove("popup_opend");
-    });
+    closePopUp();
   }
 }
+
+function closePopUp() {
+  PopUpList.forEach((popUpEl) => {
+    popUpEl.classList.remove("popup_opend");
+  });
+}
+
+PopUpList.forEach((popUpEl) => {
+  popUpEl.addEventListener("click", overlayClick, false);
+});
 
 //event listeners
 profileEditBtn.addEventListener("click", () => openEditPopup());
