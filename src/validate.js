@@ -1,15 +1,17 @@
 const hasValidInputs = (inputList) =>
   inputList.every((input) => input.validity.valid === true);
 
-const showInputError = (inputEl, formEl, { inputErrorClass }) => {
+const showInputError = (inputEl, formEl, { inputErrorClass, ErrorClass}) => {
   const errorSpan = formEl.querySelector("#" + inputEl.id + "-error");
   errorSpan.textContent = inputEl.validationMessage;
+  errorSpan.classList.add(ErrorClass);
   inputEl.classList.add(inputErrorClass);
 };
 
-const hideInputError = (inputEl, formEl, { inputErrorClass }) => {
+const hideInputError = (inputEl, formEl, { inputErrorClass, ErrorClass }) => {
   const errorSpan = formEl.querySelector("#" + inputEl.id + "-error");
   errorSpan.textContent = "";
+  errorSpan.classList.remove(ErrorClass);
   inputEl.classList.remove(inputErrorClass);
 };
 const checkInputValidity = (formEl, inputEl, settings) => {
