@@ -5,7 +5,7 @@ const cards = main.querySelector(".cards");
 const cardsList = cards.querySelector(".cards__list");
 const popUp = main.querySelector(".popup");
 const popUpOpend = main.querySelector(".popup_opend");
-const PopUpList = [...main.querySelectorAll(".popup")];
+const popupsList = [...main.querySelectorAll(".popup")];
 
 //profile selectors
 const profile = main.querySelector(".profile");
@@ -69,7 +69,20 @@ function editProfileFormSubmitHandler(event) {
   togglePopUp(popupEditProfile);
 }
 
-const togglePopUp = (popupFrame) => popupFrame.classList.toggle("popup_opend");
+const togglePopUp = (popupFrame) => {
+  popupFrame.classList.toggle("popup_opend");
+  checkValidEscapePopup(popupFrame);
+};
+
+const checkValidEscapePopup = (popupFrame) => {
+  if (popupFrame.classList.contains("popup_opened")) {
+    console.log("test");
+
+    document.addEventListener("keydown", closePopupByEsc, false);
+  } else {
+    document.removeEventListener("keydown", closePopupByEsc, false);
+  }
+};
 
 function removeCard(element) {
   element.remove();
@@ -120,13 +133,13 @@ function addCardFormSubmitHandler(event) {
   togglePopUp(popupAddCard);
 }
 
-function escape(e) {
+function closePopupByEsc(e) {
   if (e.key === "Escape") {
-    closePopUp();
+    togglePopUp(document.querySelector(".popup_opend"));
   }
 }
 
-function overlayClick(e) {
+function closePopupByOverlayClick(e) {
   if (
     e.target == e.currentTarget &&
     !e.currentTarget.classList.contains("popup__container")
@@ -136,13 +149,13 @@ function overlayClick(e) {
 }
 
 function closePopUp() {
-  PopUpList.forEach((popUpEl) => {
+  popupsList.forEach((popUpEl) => {
     popUpEl.classList.remove("popup_opend");
   });
 }
 
-PopUpList.forEach((popUpEl) => {
-  popUpEl.addEventListener("click", overlayClick, false);
+popupsList.forEach((popUpEl) => {
+  popUpEl.addEventListener("click", closePopupByOverlayClick, false);
 });
 
 //event listeners
@@ -153,4 +166,3 @@ closeBtnAdd.addEventListener("click", () => togglePopUp(popupAddCard));
 editForm.addEventListener("submit", editProfileFormSubmitHandler, false);
 addForm.addEventListener("submit", addCardFormSubmitHandler, false);
 clostBtnImage.addEventListener("click", () => togglePopUp(popupImage));
-document.addEventListener("keydown", escape, false);
