@@ -1,7 +1,7 @@
 const hasValidInputs = (inputList) =>
   inputList.every((input) => input.validity.valid === true);
 
-const showInputError = (inputEl, formEl, { inputErrorClass, ErrorClass}) => {
+const showInputError = (inputEl, formEl, { inputErrorClass, ErrorClass }) => {
   const errorSpan = formEl.querySelector("#" + inputEl.id + "-error");
   errorSpan.textContent = inputEl.validationMessage;
   errorSpan.classList.add(ErrorClass);
@@ -22,11 +22,22 @@ const checkInputValidity = (formEl, inputEl, settings) => {
   }
 };
 
+const resetForm = (popupFrame) => {
+  const formError = popupFrame.querySelectorAll(".form__error");
+  const formInput = popupFrame.querySelectorAll(".form__input");
+  formError.forEach((error) => {
+    error.textContent = null;
+  });
+  formInput.forEach((inputError) => {
+    inputError.classList.remove("form__input_type_error");
+  });
+};
+
 const toggleButton = (inputList, button, settings) => {
   if (hasValidInputs(inputList)) {
     button.disabled = false;
-    button.classList.remove(settings.inactiveButtonClass);
     button.classList.add(settings.submitButton);
+    button.classList.remove(settings.inactiveButtonClass);
   } else {
     button.disabled = true;
     button.classList.add(settings.inactiveButtonClass);
