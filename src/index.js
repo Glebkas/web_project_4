@@ -73,8 +73,17 @@ function editProfileFormSubmitHandler(event) {
 
 const togglePopUp = (popupFrame) => {
   popupFrame.classList.toggle("popup_opend");
-  resetForm(popupFrame);
+  checkPopupType(popupFrame);
   checkValidEscapePopup(popupFrame);
+};
+
+const checkPopupType = (popupFrame) => {
+  if (
+    popupFrame.classList.contains("popup_type_add-plcae") ||
+    popupFrame.classList.contains("popup_type_edit-profile")
+  ) {
+    resetForm(popupFrame);
+  }
 };
 
 const checkValidEscapePopup = (popupFrame) => {
