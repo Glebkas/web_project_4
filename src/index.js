@@ -56,12 +56,14 @@ function openEditPopup() {
   nameInput.value = profileName.textContent;
   titleInput.value = profileTitle.textContent;
   togglePopUp(popupEditProfile);
+  resetForm(popupEditProfile);
 }
 
 function openAddPopup() {
   imageTitleInput.value = null;
   imageUrlInput.value = null;
   togglePopUp(popupAddCard);
+  resetForm(popupAddCard);
 }
 
 function editProfileFormSubmitHandler(event) {
@@ -73,17 +75,7 @@ function editProfileFormSubmitHandler(event) {
 
 const togglePopUp = (popupFrame) => {
   popupFrame.classList.toggle("popup_opend");
-  checkPopupType(popupFrame);
   checkValidEscapePopup(popupFrame);
-};
-
-const checkPopupType = (popupFrame) => {
-  if (
-    popupFrame.classList.contains("popup_type_add-plcae") ||
-    popupFrame.classList.contains("popup_type_edit-profile")
-  ) {
-    resetForm(popupFrame);
-  }
 };
 
 const checkValidEscapePopup = (popupFrame) => {
