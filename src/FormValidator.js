@@ -26,26 +26,27 @@ class FormValidator {
 
   _setEventListeners() {
     const inputList = [...this._formEl.querySelectorAll(this._inputSelector)];
+    const submitButton = this._formEl.querySelector(this._submitButtonSelector);
 
-    this._toggleButton(inputList);
+
+
 
     inputList.forEach((input) => {
       input.addEventListener("input", () => {
         this._checkInputValidity(input);
-        this._toggleButton(inputList);
+        this._toggleButton(inputList, submitButton);
       });
     });
   }
 
-  _toggleButton(inputList) {
-    const button = this._formEl.querySelector(this._submitButtonSelector);
-
+  _toggleButton(inputList, button) {
     const hasValidInputs = inputList.every((input) => input.validity.valid);
+
 
     if (hasValidInputs) {
       button.disabled = false;
       button.classList.add(this._submitButton);
-      button.remove(this._inactiveButtonClass);
+      button.classList.remove(this._inactiveButtonClass);
     } else {
       button.classList.add(this._inactiveButtonClass);
       button.classList.remove(this._submitButton);
