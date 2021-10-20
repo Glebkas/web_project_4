@@ -90,7 +90,7 @@ const togglePopUp = (popupFrame) => {
   }
 };
 */
-
+/*
 function removeCard(element) {
   element.remove();
 }

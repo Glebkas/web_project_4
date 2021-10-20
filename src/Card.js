@@ -18,10 +18,10 @@ const checkValidEscapePopup = (popupFrame) => {
 };
 
 function closePopupByEsc(e) {
-    if (e.key === "Escape") {
-      togglePopUp(document.querySelector(".popup_opend"));
-    }
+  if (e.key === "Escape") {
+    togglePopUp(document.querySelector(".popup_opend"));
   }
+}
 
 class Card {
   constructor(data, cardSelector) {
