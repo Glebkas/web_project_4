@@ -1,5 +1,5 @@
+import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-
 
 // main selectors
 const body = document.querySelector(".root");
@@ -53,20 +53,21 @@ const cardTemplate = body
   .querySelector("#card-template")
   .content.querySelector(".cards__list-item");
 
+const cardSelector = body.querySelector("#card-template");
 //functions
 
 function openEditPopup() {
   nameInput.value = profileName.textContent;
   titleInput.value = profileTitle.textContent;
   togglePopUp(popupEditProfile);
-//resetForm(popupEditProfile);
+  //resetForm(popupEditProfile);
 }
 
 function openAddPopup() {
   imageTitleInput.value = null;
   imageUrlInput.value = null;
   togglePopUp(popupAddCard);
-//resetForm(popupAddCard);
+  //resetForm(popupAddCard);
 }
 
 function editProfileFormSubmitHandler(event) {
@@ -81,13 +82,14 @@ const togglePopUp = (popupFrame) => {
   checkValidEscapePopup(popupFrame);
 };
 
-const checkValidEscapePopup = (popupFrame) => {
+/*const checkValidEscapePopup = (popupFrame) => {
   if (popupFrame.classList.contains("popup_opend")) {
     document.addEventListener("keydown", closePopupByEsc, false);
   } else {
     document.removeEventListener("keydown", closePopupByEsc, false);
   }
 };
+*/
 
 function removeCard(element) {
   element.remove();
@@ -97,21 +99,21 @@ function toggleLike(element) {
   element.classList.toggle("card__like-button_on");
 }
 
-function addCard(card) {
+/*function addCard(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__title");
   const cardLike = cardElement.querySelector(".card__like-button");
   const cardRmvBtn = cardElement.querySelector(".card__remove-button");
-  cardImage.src = card.link;
-  cardTitle.textContent = card.name;
-  cardImage.alt = card.name;
+  cardImage.src = data.link;
+  cardTitle.textContent = data.name;
+  cardImage.alt = data.name;
   cardRmvBtn.addEventListener("click", () => removeCard(cardElement));
-  cardImage.addEventListener("click", () => openImagePreview(card));
+  cardImage.addEventListener("click", () => openImagePreview(data));
   cardLike.addEventListener("click", () => toggleLike(cardLike));
   return cardElement;
 }
-
+*/
 const openImagePreview = (card) => {
   popupImgTitle.textContent = card.name;
   popupImg.src = card.link;
@@ -119,26 +121,22 @@ const openImagePreview = (card) => {
   togglePopUp(popupImage);
 };
 
-const renderCard = (card, container) => {
-  container.append(addCard(card));
+const renderCard = (data, container) => {
+  const card = new Card(data, "#card-template").generateCard();
+  container.append(card);
 };
 
 const prependCard = (element, container) => {
-  container.prepend(element);
+  const card = new Card(element, "#card-template").generateCard();
+  container.prepend(card);
 };
 
-initialCards.forEach((card) => renderCard(card, cardsList));
-
-
-
-
-
-
+initialCards.forEach((data) => renderCard(data, cardsList));
 
 function addCardFormSubmitHandler(event) {
   event.preventDefault();
   prependCard(
-    addCard({ name: imageTitleInput.value, link: imageUrlInput.value }),
+    { name: imageTitleInput.value, link: imageUrlInput.value },
     cardsList
   );
   addCardButton.disabled = true;
@@ -146,11 +144,12 @@ function addCardFormSubmitHandler(event) {
   togglePopUp(popupAddCard);
 }
 
-function closePopupByEsc(e) {
+/*function closePopupByEsc(e) {
   if (e.key === "Escape") {
     togglePopUp(document.querySelector(".popup_opend"));
   }
 }
+*/
 
 function closePopupByOverlayClick(e) {
   if (
@@ -174,8 +173,6 @@ editForm.addEventListener("submit", editProfileFormSubmitHandler, false);
 addForm.addEventListener("submit", addCardFormSubmitHandler, false);
 clostBtnImage.addEventListener("click", () => togglePopUp(popupImage));
 
-
-
 const settings = {
   formSelector: ".form",
   inputSelector: ".form__input",
@@ -191,4 +188,3 @@ const editFormValidator = new FormValidator(settings, editForm);
 
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
-
