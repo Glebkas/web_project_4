@@ -82,46 +82,6 @@ const togglePopUp = (popupFrame) => {
   checkValidEscapePopup(popupFrame);
 };
 
-/*const checkValidEscapePopup = (popupFrame) => {
-  if (popupFrame.classList.contains("popup_opend")) {
-    document.addEventListener("keydown", closePopupByEsc, false);
-  } else {
-    document.removeEventListener("keydown", closePopupByEsc, false);
-  }
-};
-*/
-/*
-function removeCard(element) {
-  element.remove();
-}
-
-function toggleLike(element) {
-  element.classList.toggle("card__like-button_on");
-}
-
-/*function addCard(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-  const cardLike = cardElement.querySelector(".card__like-button");
-  const cardRmvBtn = cardElement.querySelector(".card__remove-button");
-  cardImage.src = data.link;
-  cardTitle.textContent = data.name;
-  cardImage.alt = data.name;
-  cardRmvBtn.addEventListener("click", () => removeCard(cardElement));
-  cardImage.addEventListener("click", () => openImagePreview(data));
-  cardLike.addEventListener("click", () => toggleLike(cardLike));
-  return cardElement;
-}
-*/
-/*const openImagePreview = (card) => {
-  popupImgTitle.textContent = card.name;
-  popupImg.src = card.link;
-  popupImg.alt = card.name;
-  togglePopUp(popupImage);
-};
-*/
-
 const renderCard = (data, container) => {
   const card = new Card(data, "#card-template").generateCard();
   container.append(card);
@@ -144,13 +104,6 @@ function addCardFormSubmitHandler(event) {
   addCardButton.classList.add("form__submit_disabled");
   togglePopUp(popupAddCard);
 }
-
-/*function closePopupByEsc(e) {
-  if (e.key === "Escape") {
-    togglePopUp(document.querySelector(".popup_opend"));
-  }
-}
-*/
 
 function closePopupByOverlayClick(e) {
   if (

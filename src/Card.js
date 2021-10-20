@@ -42,7 +42,6 @@ class Card {
 
   _toggleLike() {
     const cardLike = this._element.querySelector(".card__like-button");
-
     cardLike.classList.toggle("card__like-button_on");
   }
 
