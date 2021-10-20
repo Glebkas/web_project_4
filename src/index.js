@@ -114,12 +114,13 @@ function toggleLike(element) {
   return cardElement;
 }
 */
-const openImagePreview = (card) => {
+/*const openImagePreview = (card) => {
   popupImgTitle.textContent = card.name;
   popupImg.src = card.link;
   popupImg.alt = card.name;
   togglePopUp(popupImage);
 };
+*/
 
 const renderCard = (data, container) => {
   const card = new Card(data, "#card-template").generateCard();
