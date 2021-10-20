@@ -41,7 +41,9 @@ class Card {
   }
 
   _toggleLike() {
-    this._element.classList.toggle("card__like-button_on");
+    const cardLike = this._element.querySelector(".card__like-button");
+
+    cardLike.classList.toggle("card__like-button_on");
   }
 
   _handleDeleteCard() {
