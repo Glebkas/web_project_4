@@ -82,6 +82,22 @@ const togglePopUp = (popupFrame) => {
   checkValidEscapePopup(popupFrame);
 };
 
+const checkValidEscapePopup = (popupFrame) => {
+  if (popupFrame.classList.contains("popup_opend")) {
+    document.addEventListener("keydown", closePopupByEsc, false);
+  } else {
+    document.removeEventListener("keydown", closePopupByEsc, false);
+  }
+};
+
+function removeCard(element) {
+  element.remove();
+}
+
+function toggleLike(element) {
+  element.classList.toggle("card__like-button_on");
+}
+
 const renderCard = (data, container) => {
   const card = new Card(data, "#card-template").generateCard();
   container.append(card);
@@ -103,6 +119,12 @@ function addCardFormSubmitHandler(event) {
   addCardButton.disabled = true;
   addCardButton.classList.add("form__submit_disabled");
   togglePopUp(popupAddCard);
+}
+
+function closePopupByEsc(e) {
+  if (e.key === "Escape") {
+    togglePopUp(document.querySelector(".popup_opend"));
+  }
 }
 
 function closePopupByOverlayClick(e) {
