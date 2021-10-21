@@ -60,14 +60,12 @@ function openEditPopup() {
   nameInput.value = profileName.textContent;
   titleInput.value = profileTitle.textContent;
   togglePopUp(popupEditProfile);
-  //resetForm(popupEditProfile);
 }
 
 function openAddPopup() {
   imageTitleInput.value = null;
   imageUrlInput.value = null;
   togglePopUp(popupAddCard);
-  //resetForm(popupAddCard);
 }
 
 function editProfileFormSubmitHandler(event) {
