@@ -26,3 +26,5 @@ const initialCards = [
       link: "https://code.s3.yandex.net/web-code/lago.jpg",
     },
   ];
+
+  export default initialCards

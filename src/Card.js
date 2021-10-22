@@ -1,27 +1,10 @@
+import { togglePopUp } from "./utils.js";
+
 const popupImage = document.querySelector(".popup_type_display-image");
 const popupImg = document.querySelector(".popup__image");
 const popupImgTitle = document.querySelector(
   ".popup__title_type_display-image"
 );
-
-const togglePopUp = (popupFrame) => {
-  popupFrame.classList.toggle("popup_opend");
-  checkValidEscapePopup(popupFrame);
-};
-
-const checkValidEscapePopup = (popupFrame) => {
-  if (popupFrame.classList.contains("popup_opend")) {
-    document.addEventListener("keydown", closePopupByEsc, false);
-  } else {
-    document.removeEventListener("keydown", closePopupByEsc, false);
-  }
-};
-
-function closePopupByEsc(e) {
-  if (e.key === "Escape") {
-    togglePopUp(document.querySelector(".popup_opend"));
-  }
-}
 
 class Card {
   constructor(data, cardSelector) {
@@ -47,6 +30,7 @@ class Card {
 
   _handleDeleteCard() {
     this._element.remove();
+    this._element = null;
   }
 
   _openImagePreview() {
@@ -83,6 +67,7 @@ class Card {
 
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__title").textContent = this._name;
+    this._element.querySelector(".card__title").alt = this._name;
 
     return this._element;
   }

@@ -1,3 +1,5 @@
+import { togglePopUp } from "./utils.js";
+import initialCards from "./initial-cards.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 
@@ -6,10 +8,7 @@ const body = document.querySelector(".root");
 const main = body.querySelector(".main");
 const cards = main.querySelector(".cards");
 const cardsList = cards.querySelector(".cards__list");
-const popUp = main.querySelector(".popup");
-const popUpOpend = main.querySelector(".popup_opend");
 const popupsList = [...main.querySelectorAll(".popup")];
-const formError = main.querySelector(".form__error");
 
 //profile selectors
 const profile = main.querySelector(".profile");
@@ -32,10 +31,6 @@ const clostBtnImage = main.querySelector(
   ".popup__close-button_type_display-image"
 );
 const popupImage = main.querySelector(".popup_type_display-image");
-const popupImg = popupImage.querySelector(".popup__image");
-const popupImgTitle = popupImage.querySelector(
-  ".popup__title_type_display-image"
-);
 
 //edit form selectors
 const editForm = popupEditProfile.querySelector(".form");
@@ -69,27 +64,6 @@ function editProfileFormSubmitHandler(event) {
   togglePopUp(popupEditProfile);
 }
 
-const togglePopUp = (popupFrame) => {
-  popupFrame.classList.toggle("popup_opend");
-  checkValidEscapePopup(popupFrame);
-};
-
-const checkValidEscapePopup = (popupFrame) => {
-  if (popupFrame.classList.contains("popup_opend")) {
-    document.addEventListener("keydown", closePopupByEsc, false);
-  } else {
-    document.removeEventListener("keydown", closePopupByEsc, false);
-  }
-};
-
-function removeCard(element) {
-  element.remove();
-}
-
-function toggleLike(element) {
-  element.classList.toggle("card__like-button_on");
-}
-
 const renderCard = (data, container) => {
   const card = new Card(data, "#card-template").generateCard();
   container.append(card);
@@ -111,12 +85,6 @@ function addCardFormSubmitHandler(event) {
   addCardButton.disabled = true;
   addCardButton.classList.add("form__submit_disabled");
   togglePopUp(popupAddCard);
-}
-
-function closePopupByEsc(e) {
-  if (e.key === "Escape") {
-    togglePopUp(document.querySelector(".popup_opend"));
-  }
 }
 
 function closePopupByOverlayClick(e) {
