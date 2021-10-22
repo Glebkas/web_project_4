@@ -48,12 +48,6 @@ const imageTitleInput = popupAddCard.querySelector("#image-title");
 const imageUrlInput = popupAddCard.querySelector("#image-url");
 const addCardButton = popupAddCard.querySelector(".form__submit");
 
-//card selectors
-const cardTemplate = body
-  .querySelector("#card-template")
-  .content.querySelector(".cards__list-item");
-
-const cardSelector = body.querySelector("#card-template");
 //functions
 
 function openEditPopup() {
