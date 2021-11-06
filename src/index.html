@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around the us</title>
-    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./page/index.css" />
     <link rel="icon" type="image/png" href="./images/favicon-32x32.png" />
   </head>
   <body class="root">
@@ -29,7 +29,7 @@
               placeholder="Name"
               type="text"
               id="profile-name"
-              name="profile-name"
+              name="name"
               maxlength="40"
               minlength="2"
               required
@@ -40,7 +40,7 @@
               placeholder="About me"
               type="text"
               id="profile-about-me"
-              name="profile-about-me"
+              name="info"
               maxlength="200"
               minlength="2"
               required
@@ -51,20 +51,25 @@
         </div>
       </section>
 
-      <section class="popup popup_type_add-plcae">
+      <section class="popup popup_type_add-place">
         <div class="popup__container">
           <button
             type="button"
             class="popup__close-button popup__close-button_type_add"
           ></button>
           <h2 class="popup__title">New place</h2>
-          <form novalidate class="form form_type_add-place" name="add-place">
+          <form
+            novalidate
+            class="form form_type_add-place"
+            id="form"
+            name="add-place"
+          >
             <input
               class="form__input"
               placeholder="Title"
               type="text"
               id="image-title"
-              name="image-title"
+              name="name"
               required
               minlength="1"
               maxlength="30"
@@ -75,7 +80,7 @@
               placeholder="Image link"
               type="url"
               id="image-url"
-              name="image-url"
+              name="link"
               required
             />
             <span id="image-url-error" class="form__error"></span>
@@ -104,6 +109,7 @@
       <section class="profile">
         <div class="profile__info">
           <img
+            id="profile-img"
             class="profile__img"
             src="./images/profile-image.jpg"
             alt="travaler profile image"
@@ -139,6 +145,6 @@
         </div>
       </li>
     </template>
-    <script type="module" src="./src/index.js"></script>
+    <script type="module" src="./page/index.js"></script>
   </body>
 </html>

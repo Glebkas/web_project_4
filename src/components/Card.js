@@ -1,15 +1,13 @@
-import { togglePopUp } from "./utils.js";
-
-const popupImage = document.querySelector(".popup_type_display-image");
 const popupImg = document.querySelector(".popup__image");
 const popupImgTitle = document.querySelector(
   ".popup__title_type_display-image"
 );
 
 class Card {
-  constructor(data, cardSelector) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor({ card, handleCardClick }, cardSelector) {
+    this._name = card.name;
+    this._link = card.link;
+    this._handleCardClick = handleCardClick;
 
     this._cardSelector = cardSelector;
   }
@@ -37,8 +35,6 @@ class Card {
     popupImgTitle.textContent = this._name;
     popupImg.src = this._link;
     popupImg.alt = this._name;
-
-    togglePopUp(popupImage);
   }
 
   _setEventListeners() {
@@ -51,7 +47,7 @@ class Card {
     this._element
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        this._openImagePreview();
+        this._handleCardClick();
       });
 
     this._element
