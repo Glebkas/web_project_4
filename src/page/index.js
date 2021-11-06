@@ -52,7 +52,7 @@ const cardList = new Section(
       cardList.addItem(cardElement);
     },
   },
-  "cards__list"
+  ".cards__list"
 );
 
 const addPlacePopup = new PopupWithForms({
