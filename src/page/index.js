@@ -1,7 +1,7 @@
 import "../page/index.css";
-import profileImgSrc from "../images/profile-image.jpg"
+import profileImgSrc from "../images/profile-image.jpg";
 
-import initialCards from "../components/initial-cards.js";
+import initialCards from "../utils/initial-cards.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -11,7 +11,7 @@ import PopupWithForms from "../components/PopupWithForm.js";
 
 const profileImg = document.getElementById("profileImg");
 
-profileImg.src = profileImgSrc
+profileImg.src = profileImgSrc;
 
 //profile selectors
 const profileName = document.querySelector(".profile__name");
@@ -28,6 +28,7 @@ const titleInput = document.querySelector("#profile-about-me");
 const addForm = document.querySelector(".form_type_add-place");
 
 const containerImagePopupSelector = ".popup_type_display-image";
+const cardTemplateSelector = "#card-template";
 
 const settings = {
   formSelector: ".form",
@@ -53,7 +54,7 @@ const cardList = new Section(
             popupImage.open(card);
           },
         },
-        "#card-template"
+        cardTemplateSelector
       );
       const cardElement = newCard.generateCard();
       cardList.addItem(cardElement);
@@ -72,7 +73,7 @@ const addPlacePopup = new PopupWithForms({
           popupImage.open(card);
         },
       },
-      "#card-template"
+      cardTemplateSelector
     );
     cardList.addItem(newCard.generateCard());
   },
@@ -83,11 +84,20 @@ const userInfo = new UserInfo({
   userInfoSelector: profileTitle,
 });
 
+function onSubmitEditForm(inputs) {
+  userInfo.setUserInfo(inputs);
+  userInfoPopup.close();
+  updateEditFormContent(userInfo.getUserInfo());
+}
+
+function updateEditFormContent(data) {
+  nameInput.value = data.name;
+  titleInput.value = data.info;
+}
+
 const userInfoPopup = new PopupWithForms({
   popupSelector: ".popup_type_edit-profile",
-  handleFormSubmit: (data) => {
-    userInfo.setUserInfo(data);
-  },
+  handleFormSubmit: onSubmitEditForm,
 });
 
 const addFormValidator = new FormValidator(settings, addForm);
@@ -107,8 +117,7 @@ profileAddBtn.addEventListener("click", () => {
 });
 
 profileEditBtn.addEventListener("click", () => {
-  nameInput.value = profileName.textContent;
-  titleInput.value = profileTitle.textContent;
+  updateEditFormContent(userInfo.getUserInfo());
   userInfoPopup.open();
 });
 

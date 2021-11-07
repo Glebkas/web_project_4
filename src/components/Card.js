@@ -1,8 +1,3 @@
-const popupImg = document.querySelector(".popup__image");
-const popupImgTitle = document.querySelector(
-  ".popup__title_type_display-image"
-);
-
 class Card {
   constructor({ card, handleCardClick }, cardSelector) {
     this._name = card.name;
@@ -31,12 +26,6 @@ class Card {
     this._element = null;
   }
 
-  _openImagePreview() {
-    popupImgTitle.textContent = this._name;
-    popupImg.src = this._link;
-    popupImg.alt = this._name;
-  }
-
   _setEventListeners() {
     this._element
       .querySelector(".card__remove-button")
@@ -60,10 +49,12 @@ class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
+    this._image = this._element.querySelector(".card__image");
+    this._title = this._element.querySelector(".card__title");
 
-    this._element.querySelector(".card__image").src = this._link;
-    this._element.querySelector(".card__title").textContent = this._name;
-    this._element.querySelector(".card__title").alt = this._name;
+    this._image.src = this._link;
+    this._title.textContent = this._name;
+    this._image.alt = this._name;
 
     return this._element;
   }

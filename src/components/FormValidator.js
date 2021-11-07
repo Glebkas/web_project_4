@@ -31,18 +31,15 @@ class FormValidator {
       this._showInputError(inputEl);
     }
   }
+  _hasInvalidInput(inputList) {
+    return inputList.some((inputElement) => !inputElement.validity.valid);
+  }
 
   _toggleButton(inputList, button) {
-    const hasValidInputs = inputList.every((input) => input.validity.valid);
-
-    if (hasValidInputs) {
-      button.disabled = false;
-      button.classList.add(this._submitButton);
-      button.classList.remove(this._inactiveButtonClass);
-    } else {
+    if (this._hasInvalidInput(inputList)) {
       button.classList.add(this._inactiveButtonClass);
-      button.classList.remove(this._submitButton);
-      button.disabled = true;
+    } else {
+      button.classList.remove(this._inactiveButtonClass);
     }
   }
 
@@ -56,6 +53,11 @@ class FormValidator {
         this._toggleButton(inputList, submitButton);
       });
     });
+  }
+
+  submitButtonDisable() {
+    this._formEl._submitButton.disabled = true;
+    this._formEl._submitButton.classList.add("form__submit_disabled");
   }
 
   enableValidation() {
