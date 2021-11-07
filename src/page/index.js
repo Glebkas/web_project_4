@@ -1,3 +1,6 @@
+import "../page/index.css";
+import profileImgSrc from "../images/profile-image.jpg"
+
 import initialCards from "../components/initial-cards.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
@@ -5,6 +8,10 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithForms from "../components/PopupWithForm.js";
+
+const profileImg = document.getElementById("profileImg");
+
+profileImg.src = profileImgSrc
 
 //profile selectors
 const profileName = document.querySelector(".profile__name");
