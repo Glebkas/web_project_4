@@ -41,42 +41,30 @@ const settings = {
 };
 
 //functions
-
 const popupImage = new PopupWithImage(containerImagePopupSelector);
+
+const createCard = (card) => {
+  const newCard = new Card(
+    {
+      card,
+      handleCardClick: () => {
+        popupImage.open(card);
+    },
+    cardTemplateSelector
+  );
+  cardList.addItem(newCard.generateCard());
+};
 
 const cardList = new Section(
   {
-    renderer: (card) => {
-      const newCard = new Card(
-        {
-          card,
-          handleCardClick: () => {
-            popupImage.open(card);
-          },
-        },
-        cardTemplateSelector
-      );
-      const cardElement = newCard.generateCard();
-      cardList.addItem(cardElement);
-    },
+    renderer: createCard,
   },
   ".cards__list"
 );
 
 const addPlacePopup = new PopupWithForms({
   popupSelector: ".popup_type_add-place",
-  handleFormSubmit: (card) => {
-    const newCard = new Card(
-      {
-        card,
-        handleCardClick: () => {
-          popupImage.open(card);
-        },
-      },
-      cardTemplateSelector
-    );
-    cardList.addItem(newCard.generateCard());
-  },
+  handleFormSubmit: createCard,
 });
 
 const userInfo = new UserInfo({
@@ -114,6 +102,7 @@ userInfoPopup.setEventListeners();
 
 profileAddBtn.addEventListener("click", () => {
   addPlacePopup.open();
+  addFormValidator.submitButtonDisable();
 });
 
 profileEditBtn.addEventListener("click", () => {

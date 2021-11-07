@@ -36,6 +36,16 @@ class FormValidator {
   }
 
   _toggleButton(inputList, button) {
+    const hasValidInputs = inputList.every((input) => input.validity.valid);
+
+    if (hasValidInputs) {
+      button.classList.remove(this._inactiveButtonClass);
+    } else {
+      button.classList.add(this._inactiveButtonClass);
+    }
+  }
+
+  _toggleButton(inputList, button) {
     if (this._hasInvalidInput(inputList)) {
       button.classList.add(this._inactiveButtonClass);
     } else {
@@ -56,8 +66,8 @@ class FormValidator {
   }
 
   submitButtonDisable() {
-    this._formEl._submitButton.disabled = true;
-    this._formEl._submitButton.classList.add("form__submit_disabled");
+    const submitButton = this._formEl.querySelector(this._submitButtonSelector);
+    submitButton.classList.add(this._inactiveButtonClass);
   }
 
   enableValidation() {
