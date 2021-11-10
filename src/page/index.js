@@ -49,6 +49,7 @@ const createCard = (card) => {
       card,
       handleCardClick: () => {
         popupImage.open(card);
+      },
     },
     cardTemplateSelector
   );
