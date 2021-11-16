@@ -11,6 +11,45 @@
       <div class="header__logo"></div>
     </header>
     <main class="main">
+      <section class="popup popup_type_delete">
+        <div class="popup__container">
+          <button
+            type="button"
+            class="popup__close-button popup__close-button_type_delete"
+          ></button>
+          <form class="form form_type_delete">
+            <h2 class="popup__title">Are you Sure?</h2>
+            <button type="submit" class="form__submit form__submit_type_delete">
+              Yes
+            </button>
+          </form>
+        </div>
+      </section>
+      <section class="popup popup_type_avatar ">
+        <div class="popup__container">
+          <button
+            type="button"
+            class="popup__close-button popup__close-button_type_delete"
+          ></button>
+          <form class="form form_type_delete">
+            <h2 class="popup__title">Change profile picture</h2>
+            <input
+              class="form__input"
+              placeholder="Image link"
+              type="url"
+              id="avatar-image-url"
+              name="avatar"
+              placeholder="Image link"
+              required
+            />
+            <span id="image-url-error" class="form__error"></span>
+
+            <button type="submit" class="form__submit form__submit_disabled">
+              Save
+            </button>
+          </form>
+        </div>
+      </section>
       <section class="popup popup_type_edit-profile">
         <div class="popup__container">
           <button
@@ -45,7 +84,9 @@
               required
             />
             <span id="profile-about-me-error" class="form__error"></span>
-            <button type="submit" class="form__submit">Save</button>
+            <button type="submit" class="form__submit form__submit_disabled">
+              Save
+            </button>
           </form>
         </div>
       </section>
@@ -102,12 +143,17 @@
       </section>
 
       <section class="profile">
+
         <div class="profile__info">
-          <img
+          <div class="profile__img-container">
+          <div
             id="profileImg"
             class="profile__img"
             alt="travaler profile image"
-          />
+          ></div>
+          <button type="button" class="profile__img-edit-button">
+
+        </div>
           <div class="profile__details">
             <div class="profile__details-top">
               <h1 class="profile__name">Jacques Cousteau</h1>

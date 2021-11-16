@@ -19,10 +19,13 @@
 @import url(../blocks/form/__error/_visible/form__error_visible.css);
 @import url(../blocks/form/__input/_error/_type/form__input_type_error.css);
 @import url(../blocks/form/__submit/form__submit.css);
+@import url(../blocks/form/__submit/type/form__submit_type_delete.css);
 @import url(../blocks/form/__submit/_disabled/form__submit_disabled.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__img-container/profile__img-container.css);
 @import url(../blocks/profile/__img/profile__img.css);
+@import url(../blocks/profile/__img-edit-button/profile__img-edit-button.css);
 @import url(../blocks/profile/__details/profile__details.css);
 @import url(../blocks/profile/__details-top/profile__details-top.css);
 @import url(../blocks/profile/__name/profile__name.css);
