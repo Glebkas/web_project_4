@@ -23,4 +23,12 @@ export default class PopupDeleteVerify extends Popup {
 
     super.setEventListeners();
   }
+
+  renderLoading(loading, message) {
+    if (loading) {
+      this._submitButton.textContent = message;
+    } else {
+      this._submitButton.textContent = message;
+    }
+  }
 }

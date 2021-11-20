@@ -1,23 +1,23 @@
 export default class UserInfo {
-  constructor({ userNameSelector, userInfoSelector, userImgSelector }) {
-    this._userNameSelector = userNameSelector;
-    this._userInfoSelector = userInfoSelector;
-    this._userImgSelector = userImgSelector;
+  constructor({userName, userInfo, userImg }) {
+    this._userName = userName;
+    this._userInfo = userInfo;
+    this._userImg = userImg;
   }
 
   getUserInfo() {
     const userInfo = {
-      name: this._userNameSelector.textContent,
-      info: this._userInfoSelector.textContent,
+      name: this._userName.textContent,
+      info: this._userInfo.textContent,
       
     };
     return userInfo;
   }
 
   setUserInfo(data) {
-    this._userNameSelector.textContent = data.name;
-    this._userInfoSelector.textContent = data.about;
-    this._userImgSelector.src = data.avatar;
+    this._userName.textContent = data.name;
+    this._userInfo.textContent = data.about;
+    this.setAvatarImg(data)
     this._userId = data._id;
   }
 
@@ -26,6 +26,6 @@ export default class UserInfo {
   }
 
   setAvatarImg(data) {
-    this._userImgSelector.src = data.avatar;
+    this._userImg.src = data.avatar;
   }
 }

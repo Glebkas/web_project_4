@@ -7,40 +7,8 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import PopupWithForms from "../components/PopupWithForm.js";
-
-//profile selectors
-const profileName = document.querySelector(".profile__name");
-const profileEditBtn = document.querySelector(".profile__edit-button");
-const profileAddBtn = document.querySelector(".profile__add-button");
-const profileTitle = document.querySelector(".profile__title");
-const profileImgEditBtn = document.querySelector(".profile__img-edit-button");
-const editProfileImgForm = document.querySelector(".form_type_edit-img");
-//edit form selectors
-const editForm = document.querySelector(".form_type_edit-profile");
-const nameInput = document.querySelector("#profile-name");
-const titleInput = document.querySelector("#profile-about-me");
-
-//delete popup selectors
-const containerDeletePopupSelector =
-  document.querySelector(".popup_type_delete");
-const deleteForm = document.querySelector(".form_type_delete");
-const deleteButton = document.querySelector(".form__submit_type_delete");
-
-//add form selectors
-const addForm = document.querySelector(".form_type_add-place");
-const containerImagePopupSelector = ".popup_type_display-image";
-const cardTemplateSelector = "#card-template";
-const profileImg = document.querySelector(".profile__img");
-
-const settings = {
-  formSelector: ".form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__submit",
-  submitButton: "form__submit",
-  inactiveButtonClass: "form__submit_disabled",
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__error_visible",
-};
+import { selectors } from "../utils/constants.js";
+import { settings } from "../utils/constants.js";
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-11",
@@ -77,7 +45,7 @@ const createCard = (card) => {
       },
       userId: userInfo.getId(),
     },
-    cardTemplateSelector
+    selectors.cardTemplateSelector
   );
 
   return newCard;
@@ -95,26 +63,15 @@ const cardList = new Section(
 );
 
 const userInfo = new UserInfo({
-  userNameSelector: profileName,
-  userInfoSelector: profileTitle,
-  userImgSelector: profileImg,
+  userName: selectors.profileName,
+  userInfo: selectors.profileTitle,
+  userImg: selectors.profileImg,
 });
-
-function loadHandle(loading, popupSelector, message) {
-  const currentPopup = document.querySelector(popupSelector);
-  if (loading) {
-    currentPopup.querySelector(settings.submitButtonSelector).textContent =
-      message;
-  } else {
-    currentPopup.querySelector(settings.submitButtonSelector).textContent =
-      message;
-  }
-}
 
 const addPlacePopup = new PopupWithForms({
   popupSelector: ".popup_type_add-place",
   handleFormSubmit: (card) => {
-    loadHandle(true, ".popup_type_add-place", "Creating...");
+    addPlacePopup.renderLoading(true, "Creating...");
     api
       .postCard(card)
       .then((cardData) => {
@@ -126,7 +83,7 @@ const addPlacePopup = new PopupWithForms({
         console.log(`Error:${err}`);
       })
       .finally(() => {
-        loadHandle(false, ".popup_type_add-place", "Create");
+        addPlacePopup.renderLoading(false, "Create");
       });
   },
 });
@@ -134,7 +91,7 @@ const addPlacePopup = new PopupWithForms({
 const editProfileImgPopup = new PopupWithForms({
   popupSelector: ".popup_type_profile-img",
   handleFormSubmit: (avatar) => {
-    loadHandle(true, ".popup_type_profile-img", "Saving...");
+    editProfileImgPopup.renderLoading(true, "Saving...");
 
     api
       .changeProfileImg(avatar)
@@ -146,7 +103,7 @@ const editProfileImgPopup = new PopupWithForms({
         console.log(`Error:${err}`);
       })
       .finally(() => {
-        loadHandle(false, ".popup_type_profile-img", "Change");
+        editProfileImgPopup.renderLoading(false, "Save");
       });
   },
 });
@@ -154,7 +111,7 @@ const editProfileImgPopup = new PopupWithForms({
 const deleteCard = new PopupDeleteVerify({
   popupSelector: ".popup_type_delete",
   handleFormSubmit: (cardElement, cardId) => {
-    loadHandle(true, ".popup_type_delete", "Removing...");
+    deleteCard.renderLoading(true, "Removing...");
     api
       .deleteCard(cardId)
       .then(() => {
@@ -166,7 +123,7 @@ const deleteCard = new PopupDeleteVerify({
         console.log(`Error:${err}`);
       })
       .finally(() => {
-        loadHandle(false, ".popup_type_delete", "Yes");
+        deleteCard.renderLoading(false, "Yes");
       });
   },
 });
@@ -174,7 +131,7 @@ const deleteCard = new PopupDeleteVerify({
 const userInfoPopup = new PopupWithForms({
   popupSelector: ".popup_type_edit-profile",
   handleFormSubmit: (profile) => {
-    loadHandle(true, ".popup_type_edit-profile", "Saving...");
+    userInfoPopup.renderLoading(true, "Saving...");
     api
       .patchProfileInfo(profile)
       .then((profileData) => {
@@ -185,21 +142,24 @@ const userInfoPopup = new PopupWithForms({
         console.log(`Error:${err}`);
       })
       .finally(() => {
-        loadHandle(false, ".popup_type_edit-profile", "Update");
+        userInfoPopup.renderLoading(false, "Save");
       });
   },
 });
 
-const popupImage = new PopupWithImage(containerImagePopupSelector);
+const popupImage = new PopupWithImage(selectors.containerImagePopupSelector);
 
 function updateEditFormContent(data) {
-  nameInput.value = data.name;
-  titleInput.value = data.info;
+  selectors.nameInput.value = data.name;
+  selectors.titleInput.value = data.info;
 }
 
-const addFormValidator = new FormValidator(settings, addForm);
-const editFormValidator = new FormValidator(settings, editForm);
-const editImgFormValidator = new FormValidator(settings, editProfileImgForm);
+const addFormValidator = new FormValidator(settings, selectors.addForm);
+const editFormValidator = new FormValidator(settings, selectors.editForm);
+const editImgFormValidator = new FormValidator(
+  settings,
+  selectors.editProfileImgForm
+);
 
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
@@ -212,17 +172,20 @@ userInfoPopup.setEventListeners();
 editProfileImgPopup.setEventListeners();
 deleteCard.setEventListeners();
 
-profileAddBtn.addEventListener("click", () => {
+selectors.profileAddBtn.addEventListener("click", () => {
   addPlacePopup.open();
-  addFormValidator.submitButtonDisable();
+  addFormValidator.resetValidation();
+  addFormValidator.disableButton();
 });
 
-profileEditBtn.addEventListener("click", () => {
+selectors.profileEditBtn.addEventListener("click", () => {
   updateEditFormContent(userInfo.getUserInfo());
+  editFormValidator.resetValidation();
   userInfoPopup.open();
 });
 
-profileImgEditBtn.addEventListener("click", () => {
+selectors.profileImgEditBtn.addEventListener("click", () => {
   editProfileImgPopup.open();
-  addFormValidator.submitButtonDisable();
+  editImgFormValidator.resetValidation();
+  editImgFormValidator.disableButton();
 });
