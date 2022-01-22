@@ -1,4 +1,4 @@
-# Around The U.S. landing page with popup
+# Around The U.S. Social Image Web App –
 
 ## Table of contents
 
@@ -21,10 +21,13 @@ Users should be able to:
 - View the optimal layout depending on their device's screen size
 - See hover states for interactive elements
 - Edit the profile name and title
+- Change profile image
 - Popup would open when the edit button clicked
 - Add new cards
+- Delete User Cards
 - Image preview will display when image clicked
-- Like button will change the heart state to black
+- Like button will change the heart state and count likes
+- All changes will be saved after refresh
 
 ### Screenshot
 
@@ -43,10 +46,13 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - CSS Grid
+- BEM
 - JavaScript
+- Es6 Classes
+- Webpack
 
 ### Continued development
-
+ 
 
 ## Author
 
